@@ -9,7 +9,7 @@ class BookInline(admin.TabularInline):
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     model = Author
-    list_display = ['first_name', 'last_name']
+    list_display = ['fullname',]
     fields = [
         ('first_name', 'last_name'),
     ]
