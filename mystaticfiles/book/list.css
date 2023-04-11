@@ -1,0 +1,21 @@
+.books {
+    display: block;
+    width: 50%;
+    background-color: #e85a4f;
+    color: #D8C3A5;
+    list-style-type: none;
+    padding: 5px;
+}
+
+.books a {
+    text-decoration: none;
+    background-color: #e85a4f;
+    color: #D8C3A5;
+}
+
+.popular-books-banner {
+    color: #EAE7DC;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 5px;
+}

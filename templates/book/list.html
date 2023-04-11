@@ -1,14 +1,25 @@
 {% extends 'index.html' %}
 {% load static %}
+
 {% block title %}Books{% endblock %}
 
 {% block content %}
     <p>Books</p>
+    <div>
+        <a href="{% url 'book:series-list' %}">View series</a>
+    </div>
     <div class="books">
+        <p class="popular-books-banner">Popular books</p>
         <ul>
             {% for book in books %}
             <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a> by {{book.authors}}</li>
             {% endfor %}
         </ul>
     </div>
+
+{% block series_list %}
 {% endblock %}
+
+{% endblock %}
+
+

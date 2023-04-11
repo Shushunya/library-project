@@ -1,0 +1,14 @@
+{% extends 'book/list.html' %}
+
+{% load static %}
+
+{% block series_list %}
+SERIES {{ object_list }}
+{% for series in object_list %}
+<ul>
+    <li><a href="{% url 'book:series-detail' series.id %}">{{ series }}</a></li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}

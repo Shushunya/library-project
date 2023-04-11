@@ -1,3 +1,5 @@
+@import url("./book/list.css");
+
 body {
     background-color: #EAE7DC;
     color: #8E8D8A;
@@ -12,7 +14,6 @@ body {
     background-color: #E98074
 
     }
-
 
 .nav-bar a {
     float: right;

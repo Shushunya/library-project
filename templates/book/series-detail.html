@@ -1,0 +1,12 @@
+{% extends 'author/detail.html' %}
+{% load static %}
+
+{% block content %}
+    <p>{{ object }}</p>
+    <p>Number of books: {{ object.books_count }}</p>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }}<a href="{% url 'book:detail-view' book.id %}"> view</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
