@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from .models import Book
+from .models import Book, BookSeries
 
 
 class BookList(ListView):
@@ -21,6 +21,7 @@ class BookDetail(DetailView):
     model = Book
     template_name = "book/detail.html"
     context_object_name = 'book'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         authors = [{
@@ -30,3 +31,26 @@ class BookDetail(DetailView):
         context['authors'] = authors
 
         return context
+
+
+class BookSeriesList(ListView):
+    model = BookSeries
+    template_name = "book/series-list.html"
+
+
+class BookSeriesDetail(DetailView):
+    model = BookSeries
+    template_name = "book/series-detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        books = [{
+            'id': book.id,
+            'title': book.title
+        } for book in kwargs['object'].books.all()]
+        context['books'] = books
+
+        print(context)
+        return context
+
