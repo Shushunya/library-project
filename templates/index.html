@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="nav-bar">
-        <div class="nav-bar-left"><a href="">Library</a></div>
+        <div class="nav-bar-left"><a href="{% url 'catalog:index' %}">Library</a></div>
 
-            <a href="">Authors</a>
-            <a href="">books</a>
+            <a href="{% url 'author:list-view' %}">Authors</a>
+            <a href="{% url 'book:list-view' %}">books</a>
 
     </div>
     <div class="content">

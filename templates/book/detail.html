@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+    <h1>Book: {{ book.title }}</h1>
+    <h2>by {% for author in authors %}
+        <a href="{% url 'author:detail-view' author.id %}">{{ author.fullname }}</a>
+        {% endfor %}</h2>
+{% endblock %}

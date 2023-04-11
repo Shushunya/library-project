@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Authors{% endblock %}
+
+{% block content %}
+    <p>Authors</p>
+    <div class="authors">
+        <ul>
+            {% for a in object_list %}
+            <li><a href="{% url 'author:detail-view' a.id %}">{{ a.fullname }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
