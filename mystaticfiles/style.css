@@ -1,0 +1,39 @@
+body {
+    background-color: #EAE7DC;
+    color: #8E8D8A;
+    margin: 0;
+}
+
+.nav-bar {
+    display: block;
+    width: 100%;
+    height: 50px;
+    font-family: sans-serif;
+    background-color: #E98074
+
+    }
+
+
+.nav-bar a {
+    float: right;
+    padding: 15px;
+    text-decoration: none;
+    text-align: center;
+    color: #EAE7DC;
+    letter-spacing: 2px;
+}
+
+.nav-bar-left a {
+    float: left;
+    margin-left: 0;
+    padding: 10px 5px;
+    font-size: 25px;
+    font-family: serif;
+    letter-spacing: 10px;
+
+}
+
+.filler {
+    padding: 5px;
+    text-align: justify;
+}

@@ -1,9 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Library</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <title>
+        Library {% block title %}{% endblock %}
+    </title>
 </head>
 <body>
+    <div class="nav-bar">
+        <div class="nav-bar-left"><a href="">Library</a></div>
+
+            <a href="">Authors</a>
+            <a href="">books</a>
+
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
     <div class="filler">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed libero massa, pulvinar vel tristique rhoncus, placerat sed nisl. Nullam dignissim lectus quis velit suscipit, sit amet eleifend orci porta. Nam faucibus ipsum eget cursus convallis. Nam nibh dolor, volutpat ut mi vitae, viverra dignissim massa. In at eros porttitor, posuere nibh eu, dictum quam. Aenean quam est, malesuada id tortor id, pretium mollis dolor. Proin efficitur malesuada augue, a aliquet enim iaculis ac. Nulla aliquam et quam at ornare. Cras quis egestas nulla, nec hendrerit ipsum. Donec varius mauris eu cursus iaculis. Phasellus a lorem felis.
