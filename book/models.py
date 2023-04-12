@@ -4,13 +4,24 @@ from author.models import Author
 
 class BookSeries(models.Model):
     name = models.CharField(max_length=200)
-
+    # number_of_books = models.IntegerField(default=1)
     objects = models.Manager()
 
-    @property
-    def books_count(self):
-        return self.books.all().count()
+    class SeriesName(models.IntegerChoices):
+        STANDALONE = 1
+        DUOLOGY = 2
+        TRILOGY = 3
+        QUARTET = 4
 
+    form_name = models.PositiveSmallIntegerField(choices=SeriesName.choices,
+                                                 default=SeriesName.STANDALONE)
+
+    @property
+    def actual_books_count(self):
+        return self.books.all().count()
+    @property
+    def planned_books_count(self):
+        return self.form_name
     class Meta:
         default_related_name = "book_series"
         verbose_name_plural = "book series"
@@ -27,6 +38,16 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author)
     series = models.ForeignKey(BookSeries, on_delete=models.DO_NOTHING, null=True, blank=True)
     order_in_series = models.IntegerField(default=1)
+
+    class AncientGreekForm(models.IntegerChoices):
+        POETRY = 1
+        DRAMA = 2
+        PROSE = 3
+    lit_form = models.PositiveSmallIntegerField(
+        choices=AncientGreekForm.choices,
+        default=AncientGreekForm.PROSE
+    )
+
     objects = models.Manager()
 
     class Meta:

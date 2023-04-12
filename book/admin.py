@@ -5,7 +5,7 @@ from .models import Book, BookSeries
 @admin.register(BookSeries)
 class BookSeriesAdmin(admin.ModelAdmin):
     model = BookSeries
-    list_display = ['name', 'books_count', ]
+    list_display = ['name', 'actual_books_count', 'form_name', 'planned_books_count']
 
 
 @admin.register(Book)
@@ -17,5 +17,6 @@ class BookAdmin(admin.ModelAdmin):
         'title',
         'series',
         'order_in_series',
+        'lit_form',
     ]
 
