@@ -7,6 +7,8 @@
     <h2>by {% for author in authors %}
         <a href="{% url 'author:detail-view' author.id %}">{{ author.fullname }}</a>
         {% endfor %}</h2>
+    {% if series %}
     <h3>Series: <a href="{% url 'book:series-detail' series.id %}">{{ series.title }}</a></h3>
     <p>Book number {{ series.book_number }}</p>
+    {% endif %}
 {% endblock %}

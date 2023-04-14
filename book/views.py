@@ -29,6 +29,8 @@ class BookDetail(DetailView):
             'id': author.id,
             'fullname': author.fullname
         } for author in kwargs['object'].authors.all()]
+        context['authors'] = authors
+
         series_queryset = kwargs['object'].series
         if series_queryset is not None:
             form = BookSeries.SeriesName(
@@ -39,7 +41,7 @@ class BookDetail(DetailView):
                 'book_number': kwargs['object'].order_in_series
             }
             context['series'] = series
-        context['authors'] = authors
+
         return context
 
 

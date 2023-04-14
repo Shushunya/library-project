@@ -4,11 +4,32 @@
 
 {% block content %}
     <h1>Author: {{ author.fullname }}</h1>
-    <h2>Books: {{ books }}</h2>
+    <h2>Books number: {{ count }}</h2>
+
+    {% if series %}
     <p> SERIES </p>
+    {% for s in series %}
+        <h1>Name: {{ s.title }}<a href="{% url 'book:series-detail' s.id %}">view</a> </h1>
+        <h2>Info: </h2>
+        <p>Number of books: {{ s.books_count }}</p>
+        {% if s.is_finished %}
+            <p>Series is completely finished</p>
+        {% else %}
+            <p>Writing is in process...</p>
+        {% endif %}
+        <ul>
+            {% for book in s.books %}
+            <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+    {% endfor %}
+    {% endif %}
     {% block series %}
     {% endblock %}
+    <h1>ALL BOOKS</h1>
     <ul>
+
         {% for book in books %}
             <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a></li>
         {% endfor %}
