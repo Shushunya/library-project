@@ -25,8 +25,7 @@ class AuthorDetail(DetailView):
                 'books_planned': series.planned_books_count,
                 'is_finished': series.actual_books_count == series.planned_books_count,
                 'books': series.books.all()
-            }
-            for series in s]
+            } for series in s]
         books = [{
             'title': book.title,
             'id': book.id,

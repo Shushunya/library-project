@@ -12,7 +12,11 @@
         <p class="popular-books-banner">Popular books</p>
         <ul>
             {% for book in books %}
-            <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a> by {{book.authors}}</li>
+            <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a> by
+                {% for author in book.authors %}
+                    <a href="{% url 'author:detail-view' author.id %}">{{ author.fullname }}</a>
+                {% endfor %}
+            </li>
             {% endfor %}
         </ul>
     </div>

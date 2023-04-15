@@ -11,8 +11,12 @@ class BookList(ListView):
         books = [{
             'id': book.id,
             'title': book.title,
-            'authors': book.display_authors()
+            'authors': [{
+                'id': author.id,
+                'fullname': author.fullname
+            } for author in book.authors.all()]
         } for book in Book.objects.all()]
+
         context['books'] = books
         return context
 
@@ -62,7 +66,5 @@ class BookSeriesDetail(DetailView):
             'title': book.title
         } for book in kwargs['object'].books.all()]
         context['books'] = books
-
-        print(context)
         return context
 
