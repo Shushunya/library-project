@@ -1,0 +1,34 @@
+.book-title {
+    background-color: #D8C3A5;
+    color: #E98074;
+    margin-top: 5px;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid #8E8D8A;
+    border-radius: 2px;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-family: cursive;
+}
+
+.book-title a {
+    color: #E98074;
+    text-decoration: none;
+}
+
+.general-info {
+    margin: 10px;
+    
+}
+
+.series {
+    color: #E98074;
+    font-size: 30px;
+    font-family: sans-serif;
+    
+}
+
+.series a {
+    text-decoration: none;
+    color: #E98074;
+}

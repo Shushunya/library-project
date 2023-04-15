@@ -3,12 +3,21 @@
 {% block title %}{{ book.title }}{% endblock %}
 
 {% block content %}
-    <h1>Book: {{ book.title }}</h1>
-    <h2>by {% for author in authors %}
-        <a href="{% url 'author:detail-view' author.id %}">{{ author.fullname }}</a>
-        {% endfor %}</h2>
-    {% if series %}
-    <h3>Series: <a href="{% url 'book:series-detail' series.id %}">{{ series.title }}</a></h3>
-    <p>Book number {{ series.book_number }}</p>
-    {% endif %}
+    <div class="book-title">
+        <p>Book: {{ book.title }} by 
+            {% for author in authors %}
+                <a href="{% url 'author:detail-view' author.id %}">{{ author.fullname }}</a>
+            {% endfor %}</p>
+    </div>
+
+    <div class="general-info">
+        {% if series %}
+        <div class="series">
+            <p>Series: <a href="{% url 'book:series-detail' series.id %}">{{ series.title }}</a> (book #{{ series.book_number }})</p>
+        </div>
+        {% endif %}
+        <p>Number of pages: 300</p>
+        <p>Year of publication: 2020 </p>
+
+    </div>
 {% endblock %}
