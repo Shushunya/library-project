@@ -1,0 +1,53 @@
+.author-title {
+    background-color: #D8C3A5;
+    color: #E98074;
+    margin-top: 5px;
+    padding: 3px;
+    text-align: center;
+    border: 1px solid #8E8D8A;
+    border-radius: 2px;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-family: cursive;
+}
+
+.short-info {
+    background-color: #D8C3A5;
+    color: #E85A4F;
+    margin: 0;
+    padding: 5px;
+}
+
+.column-bio {
+    float: left;
+    width: 70%;
+    /* position: relative; */
+}
+
+.column-books {
+    float: right;
+    width: 30%;
+}
+
+.series {
+    background-color: rgba(142, 141, 138, 0.4);
+    color: #E85A4F;
+    /* height: 40px; */
+    text-align: left;
+    padding: 5px 10px;
+    /* padding-top: 5px; */
+    margin-top:5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.series-detail {
+    color: #E98074;
+    margin-left: 20px;
+}
+
+.detail-content {
+    color: greenyellow;
+    margin-left: 25px;
+    font-size: 15px;
+}

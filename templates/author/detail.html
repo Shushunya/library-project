@@ -3,36 +3,67 @@
 {% block title %}: {{ author.fullname }}{% endblock %}
 
 {% block content %}
-    <h1>Author: {{ author.fullname }}</h1>
-    <h2>Books number: {{ count }}</h2>
+    <script src="{% static './author/detail.js' %}"></script>
+    <div class="author-title">
+        <p>AUTHOR: {{ author.fullname }}</p>
+    </div>
+    <div class="short-info">
+        <p>Total amount of books: {{ count }}</p>
+        <p>Birthday: 08/09/1950 Bornplace: Kyiv, Ukraine</p>
+    </div>
 
-    {% if series %}
-    <p> SERIES </p>
-    {% for s in series %}
-        <h1>Name: {{ s.title }}<a href="{% url 'book:series-detail' s.id %}">view</a> </h1>
-        <h2>Info: </h2>
-        <p>Number of books: {{ s.books_count }}</p>
-        {% if s.is_finished %}
-            <p>Series is completely finished</p>
-        {% else %}
-            <p>Writing is in process...</p>
-        {% endif %}
-        <ul>
-            {% for book in s.books %}
-            <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a></li>
-        {% endfor %}
-        </ul>
 
-    {% endfor %}
-    {% endif %}
-    {% block series %}
-    {% endblock %}
-    <h1>ALL BOOKS</h1>
-    <ul>
+    <div class="author-info">
+        <div class="column-bio" id="bio">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at tellus felis. Curabitur placerat, sapien at facilisis varius, tortor lacus tempor massa, ut fringilla tortor leo sed ipsum. Nullam condimentum ipsum massa, non volutpat elit pulvinar et. Ut et lacus ac lectus tempus ornare. Vestibulum tristique leo purus, non dapibus mauris sollicitudin sed. Phasellus iaculis id sem ut aliquet. Quisque id nibh ut sapien scelerisque condimentum. Nulla aliquam lacus ut urna bibendum, in porta quam imperdiet. Fusce placerat ornare nisi in consequat. Nunc id iaculis mi. Aenean malesuada lorem sed purus iaculis hendrerit. Sed ante justo, cursus id dapibus nec, ultrices ac libero. Aliquam sit amet purus vel turpis imperdiet rutrum et a arcu. Vestibulum sit amet porta est. In hac habitasse platea dictumst. Morbi tempus porta enim in convallis.
+    
+    Nam eget rutrum arcu, molestie feugiat nisi. Cras commodo neque eget nisi cursus, eget varius purus congue. Quisque posuere risus porttitor auctor posuere. Fusce sed diam nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam turpis dui, vestibulum ac urna in, efficitur congue orci. Vestibulum quis faucibus mi. In quis est orci. Pellentesque tristique pretium lacus, et varius risus bibendum dignissim. Mauris ut iaculis ligula. Praesent lacinia pulvinar gravida.
+    
+    Quisque nisl mauris, lacinia vel luctus nec, malesuada euismod nunc. Ut eu leo diam. Aliquam efficitur erat ut mauris tincidunt, non lacinia purus interdum. Aliquam nulla lectus, viverra ac imperdiet id, molestie eget mauris. Mauris id odio a orci luctus egestas eu et lectus. Ut vel purus et lacus dignissim tempor vitae sed orci. Praesent ultrices mi nec ex bibendum, in suscipit orci aliquam. Suspendisse ut gravida ipsum. In commodo id sem ut malesuada. Donec congue dictum nisi, eu pellentesque libero ullamcorper ac. Duis nec pretium purus, quis posuere lacus. Cras quis libero nec justo suscipit malesuada. Nunc a mollis nibh. Ut purus dui, rhoncus sit amet pulvinar vel, semper sit amet massa.
+    
+    Vivamus tellus tortor, facilisis at varius eu, efficitur eget dui. Aenean et facilisis neque, at tincidunt neque. Donec dui nunc, ullamcorper lobortis quam vitae, rhoncus semper nunc. Morbi volutpat aliquet sapien id dignissim. Curabitur ac porttitor velit. Duis et lacinia mauris. Morbi vel egestas dolor, eu accumsan sapien. Quisque sed justo ultricies, iaculis velit eu, vulputate libero.
+    
+    Suspendisse at nunc felis. Praesent tellus est, pellentesque id quam vel, accumsan lacinia ante. Integer laoreet efficitur sapien, vitae interdum libero vestibulum nec. Morbi nec elit ultrices, hendrerit risus eget, tempor purus. Pellentesque lorem neque, finibus eget porta in, aliquam a enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut luctus neque turpis, at porttitor ante mollis ut. Pellentesque ut tortor mauris. Fusce bibendum eros ac lectus venenatis varius. Phasellus commodo urna et tortor finibus bibendum. Quisque venenatis lorem id velit scelerisque sodales. Integer porta et tortor non tincidunt. Curabitur elementum efficitur libero ut bibendum.
+            </p>
+        </div>
 
-        {% for book in books %}
-            <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a></li>
-        {% endfor %}
-    </ul>
+        <div class="column-books" id="book-info">
+            {% if series %}
+            <details class="series">
+                <summary>SERIES</summary>
+                {% for s in series %}
+                    <details class="series-detail">
+                        <summary>{{s.title}}</summary>
+                        <div class="detail-content">
+                            <p><a href="{% url 'book:series-detail' s.id %}">More</a></p>
+                            <p>Number of books: {{ s.books_count }}</p>
+                            {% if s.is_finished %}
+                                <p>Series is completely finished</p>
+                            {% else %}
+                                <p>Writing is in process...</p>
+                            {% endif %}
+                            <ul>
+                                {% for book in s.books %}
+                                <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        </details>                    
+                {% endfor %}
+            </details>
+            {% endif %}
+
+            <details class="all-books">
+                <summary>Books</summary>
+                <ul>
+                    {% for book in books %}
+                        <li><a href="{% url 'book:detail-view' book.id %}">{{ book.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </details>
+        </div>
+    </div>
+    
 
 {% endblock %}
